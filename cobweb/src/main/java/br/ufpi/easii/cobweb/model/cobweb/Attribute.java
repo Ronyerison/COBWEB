@@ -18,7 +18,6 @@ public class Attribute {
 	private List<String> values;
 	private List<String> discriminatorValues;
 	private Map<String, AttributeValue> attributesValues;
-	private Double gain;
 	private List<String> ids;
 
 	/**
@@ -31,7 +30,6 @@ public class Attribute {
 		this.label = label;
 		this.values = values;
 		this.discriminatorValues = discriminatorValues;
-		this.gain = null;
 	}
 
 	/**
@@ -42,7 +40,6 @@ public class Attribute {
 		this.values = new ArrayList<String>();
 		this.discriminatorValues = new ArrayList<String>();
 		this.ids = new ArrayList<String>();
-		this.gain = null;
 	}
 
 	public void calculeEntropy() {
@@ -74,19 +71,6 @@ public class Attribute {
 		}
 	}
 
-	public void calculeGain(Double totalEntropy) {
-		calculeEntropy();
-		Iterator<AttributeValue> iterator = attributesValues.values()
-				.iterator();
-		Double sum = 0.0;
-		while (iterator.hasNext()) {
-			AttributeValue attributeValue = iterator.next();
-			sum += attributeValue.getEntropy()
-					* (attributeValue.getCount().doubleValue() / (double) values.size());
-		}
-
-		this.gain = totalEntropy - sum;
-	}
 
 	public void addValue(String value, String discriminatorValue, String id) {
 		this.values.add(value);
@@ -140,21 +124,6 @@ public class Attribute {
 	}
 
 	/**
-	 * @return the gain
-	 */
-	public Double getGain() {
-		return gain;
-	}
-
-	/**
-	 * @param gain
-	 *            the gain to set
-	 */
-	public void setGain(Double gain) {
-		this.gain = gain;
-	}
-
-	/**
 	 * @return the attributesValues
 	 */
 	public Map<String, AttributeValue> getAttributesValues() {
@@ -176,8 +145,7 @@ public class Attribute {
 	 */
 	@Override
 	public String toString() {
-		return "Attribute [label=" + label + ", gain=" + gain
-				+ ", attributesValues=" + attributesValues + "]";
+		return "Attribute [label=" + label + ", attributesValues=" + attributesValues + "]";
 	}
 
 }
