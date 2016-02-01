@@ -8,6 +8,7 @@ import java.util.HashMap;
 import java.util.List;
 
 import br.ufpi.easii.cobweb.model.cobweb.Instance;
+import br.ufpi.easii.cobweb.model.cobweb.NodeInfo;
 import br.ufpi.easii.cobweb.model.tree.Node;
 
 
@@ -17,35 +18,35 @@ import br.ufpi.easii.cobweb.model.tree.Node;
  */
 public class CobwebAlgorithm {
 
-	public Node<Instance> buildTree(List<String[]> trainningSet){
-		if (trainningSet.isEmpty()) {
-			return null;
-		} 
+	public Node<NodeInfo> run(Node<NodeInfo> root, Instance instance){
+		if(isLeaf(root)){
+			createNewTerminal(root, instance);
+			incorporate(root, instance);
+		}else{
+			incorporate(root, instance);
+		}
+		for (Node<NodeInfo> child : root.getChildren()) {
+			
+		}
 		
 		return null;
 	}
 	
-	private List<String> getDiscriminatorValues(List<String[]> trainningSet) {
-		List<String> discriminatorValues = new ArrayList<String>();
-		for (String[] example : trainningSet) {
-			discriminatorValues.add(example[example.length - 1]);
+	private void incorporate(Node<NodeInfo> root, Instance instance) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	private void createNewTerminal(Node<NodeInfo> root, Instance instance) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	private boolean isLeaf(Node<NodeInfo> node){
+		if(node.getChildren().isEmpty()){
+			return true;
 		}
-		discriminatorValues.remove(0);
-		return discriminatorValues;
+		return false;
 	}
 	
-	private boolean hasEqualClassification(List<String> discriminatorValues) {
-		HashMap<String, Integer> map = new HashMap<String, Integer>();
-		for (String key : discriminatorValues) {
-			if (!map.containsKey(key)) {
-				map.put(key, 1);
-			} else {
-				map.replace(key, map.get(key) + 1);
-			}
-		}
-		if (map.values().size() > 1) {
-			return false;
-		}
-		return true;
-	}
 }
