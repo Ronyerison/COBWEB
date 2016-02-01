@@ -15,15 +15,12 @@ public class Attribute {
 	private String value;
 	private List<String> discriminatorValues;
 	private Map<String, AttributeValue> attributesValues;
-	private String id;
 
 	/**
-	 * @param id
 	 * @param label
 	 * @param value
 	 */
-	public Attribute(String id, String label, String value) {
-		this.id = id;
+	public Attribute(String label, String value) {
 		this.label = label;
 		this.value = value;
 	}
@@ -34,14 +31,6 @@ public class Attribute {
 
 	public void setValue(String value) {
 		this.value = value;
-	}
-
-	public String getId() {
-		return id;
-	}
-
-	public void setId(String id) {
-		this.id = id;
 	}
 
 	/**

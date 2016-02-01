@@ -9,6 +9,8 @@ import java.awt.event.ActionListener;
 import java.io.File;
 import java.nio.file.Path;
 import java.nio.file.Paths;
+import java.util.ArrayList;
+import java.util.List;
 
 import javax.swing.JButton;
 import javax.swing.JFileChooser;
@@ -21,6 +23,8 @@ import javax.swing.UIManager;
 import javax.swing.border.EmptyBorder;
 import javax.swing.border.TitledBorder;
 
+import br.ufpi.easii.cobweb.model.cobweb.Attribute;
+import br.ufpi.easii.cobweb.model.cobweb.Instance;
 import br.ufpi.easii.cobweb.model.tree.Node;
 
 /**
@@ -145,5 +149,23 @@ public class InitialView extends JFrame {
 //		}
 //		return id3Algorithm.buildTree(trainningSet);
 		return null;
+	}
+	
+	public List<Instance> createInstances(List<String[]> inputs){
+		List<Instance> instances = new ArrayList<Instance>();
+		String[] labels = inputs.remove(0); 
+				
+		for (int i = 0; i < inputs.size(); i++) {
+			Instance instance = new Instance();
+			List<Attribute> attributes = new ArrayList<Attribute>();
+			
+			for (int j = 0; j < labels.length; j++) {
+				attributes.add(new Attribute(labels[j], inputs.get(i)[j]));
+			}
+			
+			instance.setAttributes(attributes);
+			instances.add(instance);
+		}
+		return instances;
 	}
 }
