@@ -77,4 +77,12 @@ public class NodeInfo {
 	public void addAttributeValue(AttributeValue value){
 		mapProbability.put(value.getValue(), value);
 	}
+	
+	public void addInstance(Instance instance){
+		this.instances.add(instance);
+		for (Attribute attribute : instance.getAttributes()) {
+			AttributeValue attributeValue = new AttributeValue(attribute.getLabel(), attribute.getValue(), 0.0);
+			addAttributeValue(attributeValue);
+		}
+	}
 }
