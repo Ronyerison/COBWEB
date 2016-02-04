@@ -3,8 +3,6 @@
  */
 package br.ufpi.easii.cobweb.model.cobweb;
 
-import java.util.List;
-import java.util.Map;
 
 /**
  * @author Ronyerison
@@ -13,8 +11,7 @@ import java.util.Map;
 public class Attribute {
 	private String label;
 	private String value;
-	private List<String> discriminatorValues;
-	private Map<String, AttributeValue> attributesValues;
+	
 
 	/**
 	 * @param label
@@ -48,44 +45,6 @@ public class Attribute {
 		this.label = label;
 	}
 
-	/**
-	 * @return the discriminatorValues
-	 */
-	public List<String> getDiscriminatorValues() {
-		return discriminatorValues;
-	}
 
-	/**
-	 * @param discriminatorValues
-	 *            the discriminatorValues to set
-	 */
-	public void setDiscriminatorValues(List<String> discriminatorValues) {
-		this.discriminatorValues = discriminatorValues;
-	}
-
-	/**
-	 * @return the attributesValues
-	 */
-	public Map<String, AttributeValue> getAttributesValues() {
-		return attributesValues;
-	}
-
-	/**
-	 * @param attributesValues
-	 *            the attributesValues to set
-	 */
-	public void setAttributesValues(Map<String, AttributeValue> attributesValues) {
-		this.attributesValues = attributesValues;
-	}
-
-	/*
-	 * (non-Javadoc)
-	 * 
-	 * @see java.lang.Object#toString()
-	 */
-	@Override
-	public String toString() {
-		return "Attribute [label=" + label + ", attributesValues=" + attributesValues + "]";
-	}
 
 }

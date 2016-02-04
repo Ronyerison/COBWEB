@@ -4,7 +4,9 @@
 package br.ufpi.easii.cobweb.model.cobweb;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 /**
  * @author Ronyerison
@@ -12,10 +14,12 @@ import java.util.List;
  */
 public class NodeInfo {
 	private List<Instance> instances;
+	private Map<String, AttributeValue> mapProbability;
 	private Double uc;
 	
 	public NodeInfo() {
 		instances = new ArrayList<Instance>();
+		mapProbability = new HashMap<String, AttributeValue>();
 		uc = 0.0;
 	}
 
@@ -55,5 +59,22 @@ public class NodeInfo {
 	public void setUc(Double uc) {
 		this.uc = uc;
 	}
+
+	/**
+	 * @return the mapProbability
+	 */
+	public Map<String, AttributeValue> getMapProbability() {
+		return mapProbability;
+	}
+
+	/**
+	 * @param mapProbability the mapProbability to set
+	 */
+	public void setMapProbability(Map<String, AttributeValue> mapProbability) {
+		this.mapProbability = mapProbability;
+	}
 	
+	public void addAttributeValue(AttributeValue value){
+		mapProbability.put(value.getValue(), value);
+	}
 }
