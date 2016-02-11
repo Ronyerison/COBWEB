@@ -14,16 +14,25 @@ public class Node<T> {
 	private Node<T> parent = null;
 	private T data = null;
 	private List<Node<T>> children = new ArrayList<Node<T>>();
-	private List<Edge<String, T>> edges = new ArrayList<Edge<String,T>>();
 
 	public Node(T data) {
 		this.data = data;
+	}
+	
+	public Node(Node<T> node){
+		this.parent = node.parent;
+		this.data = node.data;
+		this.children = node.children;
+	}
+	
+	public Node<T> clone(){
+		Node<T> clone = new Node<T>(this);
+		return clone;
 	}
 
 	public Node(T data, Node<T> parent, String edgeValue) {
 		this.data = data;
 		this.parent = parent;
-		this.parent.addEdge(new Edge<String, T>(edgeValue, parent, this));
 	}
 
 	public List<Node<T>> getChildren() {
@@ -35,15 +44,21 @@ public class Node<T> {
 		this.parent = parent;
 	}
 
+	public Node<T> getParent() {
+		return parent;
+	}
+
 	public void addChild(T data, String edgeValue) {
 		Node<T> child = new Node<T>(data);
 		this.children.add(child);
-		this.addEdge(new Edge<String, T>(edgeValue, this, child));
 	}
 
 	public void addChild(Node<T> child, String edgeValue) {
 		this.children.add(child);
-		this.edges.add(new Edge<String, T>(edgeValue, this, child));
+	}
+	
+	public boolean removeChild(Node<T> child){
+		return this.children.remove(child);
 	}
 
 	public T getData() {
@@ -69,22 +84,36 @@ public class Node<T> {
 		this.parent = null;
 	}
 
-	/**
-	 * @return the edges
+	/* (non-Javadoc)
+	 * @see java.lang.Object#hashCode()
 	 */
-	public List<Edge<String, T>> getEdges() {
-		return edges;
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = 1;
+		result = prime * result + ((data == null) ? 0 : data.hashCode());
+		return result;
 	}
 
-	/**
-	 * @param edges the edges to set
+	/* (non-Javadoc)
+	 * @see java.lang.Object#equals(java.lang.Object)
 	 */
-	public void setEdges(List<Edge<String, T>> edges) {
-		this.edges = edges;
-	}
-	
-	public void addEdge(Edge<String, T> edge){
-		this.edges.add(edge);
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		@SuppressWarnings("rawtypes")
+		Node other = (Node) obj;
+		if (data == null) {
+			if (other.data != null)
+				return false;
+		} else if (!data.equals(other.data))
+			return false;
+		return true;
 	}
 
 	/* (non-Javadoc)
