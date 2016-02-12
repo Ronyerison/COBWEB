@@ -83,6 +83,7 @@ public class NodeInfo {
 		for (Attribute attribute : instance.getAttributes()) {
 			AttributeValue attributeValue = new AttributeValue(attribute.getLabel(), attribute.getValue(), 0.0);
 			addAttributeValue(attributeValue);
+			mapProbability.get(attribute.getValue()).incrementQuantity();
 		}
 	}
 }

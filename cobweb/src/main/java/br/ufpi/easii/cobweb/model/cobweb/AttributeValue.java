@@ -12,6 +12,7 @@ public class AttributeValue {
 	private String attribute;
 	private String value;
 	private Double probability;
+	private int quantity;
 	
 	public AttributeValue() {
 	}
@@ -62,6 +63,27 @@ public class AttributeValue {
 	 */
 	public void setProbability(Double probability) {
 		this.probability = probability;
+	}
+
+	/**
+	 * @return the quantity
+	 */
+	public int getQuantity() {
+		return quantity;
+	}
+
+	/**
+	 * @param quantity the quantity to set
+	 */
+	public void setQuantity(int quantity) {
+		this.quantity = quantity;
+	}
+	
+	/**
+	 * Increment quantity value
+	 */
+	public void incrementQuantity(){
+		this.quantity++;
 	}
 
 	@Override

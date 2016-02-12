@@ -67,20 +67,20 @@ public class GenerateTree{
 		graph.setRoot(tree);
 		Queue<Edge<String, String>> queue = new LinkedList<Edge<String, String>>();
 		
-		queue.clear();
-		for (Edge<String, String> edge : tree.getEdges()) {
-			queue.add(edge);
-		}
-		
-		while(!queue.isEmpty()){
-			Edge<String, String> edge = queue.remove();
-			graph.addChild(edge, edge.getParent(), edge.getChild());
-			if(edge.getChild().getEdges().size() > 0){
-				for (Edge<String, String> e : edge.getChild().getEdges()){
-					queue.add(e);
-				}
-			}
-		}
+//		queue.clear();
+//		for (Edge<String, String> edge : tree.getEdges()) {
+//			queue.add(edge);
+//		}
+//		
+//		while(!queue.isEmpty()){
+//			Edge<String, String> edge = queue.remove();
+//			graph.addChild(edge, edge.getParent(), edge.getChild());
+//			if(edge.getChild().getEdges().size() > 0){
+//				for (Edge<String, String> e : edge.getChild().getEdges()){
+//					queue.add(e);
+//				}
+//			}
+//		}
 			
 		
 //		Node<String> montante = new Node<String>("Montante");
