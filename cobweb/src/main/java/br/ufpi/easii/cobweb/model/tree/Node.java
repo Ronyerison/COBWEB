@@ -30,7 +30,7 @@ public class Node<T> {
 		return clone;
 	}
 
-	public Node(T data, Node<T> parent, String edgeValue) {
+	public Node(T data, Node<T> parent) {
 		this.data = data;
 		this.parent = parent;
 	}
@@ -39,8 +39,8 @@ public class Node<T> {
 		return children;
 	}
 
-	public void setParent(Node<T> parent, String edgeValue) {
-		parent.addChild(this, edgeValue);
+	public void setParent(Node<T> parent) {
+		parent.addChild(this);
 		this.parent = parent;
 	}
 
@@ -48,12 +48,12 @@ public class Node<T> {
 		return parent;
 	}
 
-	public void addChild(T data, String edgeValue) {
+	public void addChild(T data) {
 		Node<T> child = new Node<T>(data);
 		this.children.add(child);
 	}
 
-	public void addChild(Node<T> child, String edgeValue) {
+	public void addChild(Node<T> child) {
 		this.children.add(child);
 	}
 	
